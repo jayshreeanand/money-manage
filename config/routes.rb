@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  get '/truelayer' => 'truelayer#authenticate'
+  get '/truelayer/callback' => 'truelayer#callback'
+  get '/truelayer/access_token_callback' => 'truelayer#access_token_callback'
+
+
+
 end
