@@ -62,5 +62,25 @@ module TruelayerUtils
       response['results'][0]
       # sample response - {"update_timestamp"=>"2017-09-28T21:06:33.3044223Z", "full_name"=>"John Doe", "addresses"=>[{"address"=>"1 Market Street", "city"=>"San Francisco", "zip"=>"94103", "country"=>"USA"}], "emails"=>["john@doe.com"], "phones"=>["02079460581", "+14151234567"]}
     end
+
+    def accounts
+      response = execute(:get, 'data/v1/accounts')
+      response['results']
+    end
+
+    def account(account_id)
+      response = execute(:get, "data/v1/accounts/#{account_id}")
+      response['results'][0]
+    end
+
+    def account_balance(account_id)
+      response = execute(:get, "data/v1/accounts/#{account_id}/balance")
+      response['results'][0]
+    end
+
+    def account_transactions(account_id, from=Date.today, to=(Date.today - 3.months))
+      response = execute(:get, "data/v1/accounts/#{account_id}/transactions")
+      response['results']
+    end
   end
 end
