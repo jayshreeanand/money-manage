@@ -26,6 +26,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'faraday_middleware'
 
+# Fintech
+gem 'currency_cloud'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
