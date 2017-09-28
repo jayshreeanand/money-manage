@@ -5,9 +5,15 @@ module TruelayerUtils
   class Client
     BASE_URI = 'https://api.truelayer.com'
 
-    def initialize(url_encoded_request=false)
+    def initialize(access_token=nil, url_encoded_request=false)
       @base_connection = Faraday.new do |faraday|
         faraday.url_prefix = BASE_URI
+
+        @access_token = access_token
+        if @access_token.present?
+          faraday.authorization :Bearer, @access_token
+        end
+
         if url_encoded_request
           faraday.request :url_encoded # refresh oauth token takes only url encoded POST parameters
         else
@@ -40,10 +46,15 @@ module TruelayerUtils
       'https://auth.truelayer.com/?' + params.to_query
     end
 
-    def fetch_access_token(user, code)
+    def fetch_access_token(code)
       params = { grant_type: 'authorization_code', code: code, client_id: Rails.application.secrets.truelayer_client_id, client_secret: Rails.application.secrets.truelayer_client_secret, redirect_uri: 'http://localhost:3000/truelayer/callback'}
       response = execute(:post, 'connect/token', params, false, 'https://auth.truelayer.com')
       response['access_token']
+    end
+
+    def bank_id
+      response = execute(:get, 'data/v1/me')
+      response['results'][0]['provider_id']
     end
   end
 end
