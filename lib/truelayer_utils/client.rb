@@ -56,5 +56,11 @@ module TruelayerUtils
       response = execute(:get, 'data/v1/me')
       response['results'][0]['provider_id']
     end
+
+    def user_info
+      response = execute(:get, 'data/v1/info')
+      response['results'][0]
+      # sample response - {"update_timestamp"=>"2017-09-28T21:06:33.3044223Z", "full_name"=>"John Doe", "addresses"=>[{"address"=>"1 Market Street", "city"=>"San Francisco", "zip"=>"94103", "country"=>"USA"}], "emails"=>["john@doe.com"], "phones"=>["02079460581", "+14151234567"]}
+    end
   end
 end
