@@ -1,37 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Bank</th>
-        <th>Description</th>
-        <th>Currency</th>
-        <th>Amount</th>
-        <th>Balance</th>
-        <th>Source</th>
-        <th>Transacted at</th>
-
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @transactions.each do |transaction| %>
-        <tr>
-          <%= link_to transaction do %>
-            <td><%= transaction.bank_account.name %></td>
-            <td><%= transaction.description %></td>
-            <td><%= transaction.currency %></td>
-            <td><%= transaction.amount %></td>
-            <td><%= transaction.balance %></td>
-            <td><%= transaction.source %></td>
-            <td><%= transaction.transacted_at %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-<!-- </div> -->
+<div class="row">
+  <div class="panel panel-primary filterable">
+    <div class="panel-heading">
+      <h3 class="panel-title">Details</h3>
+        <div class="pull-right">
+          <br>
+          <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+        </div>
+      </div>
+      <table class="table table-bordered table-responsive stats-table ">
+        <thead>
+          <tr class="filters">
+            <th><input type="text" class="form-control" placeholder="Bank" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Description" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Currency" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Amount" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Balance" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Source" disabled></th>
+             <th><input type="text" class="form-control" placeholder="Transacted At" disabled></th>
+          </tr>
+          </thead>
+         <tbody>
+            <% @transactions.each do |transaction| %>
+              <tr>
+                <td><%= transaction.bank_account.name %></td>
+                <td><%= transaction.description %></td>
+                <td><%= transaction.currency %></td>
+                <td><%= transaction.amount %></td>
+                <td><%= transaction.balance %></td>
+                <td><%= transaction.source %></td>
+                <td><%= transaction.transacted_at %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+  </div>
+  </div>
+</div>
