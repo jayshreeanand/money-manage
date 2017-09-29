@@ -1,5 +1,6 @@
 class BankAccount < ApplicationRecord
   belongs_to :user
+  has_many :transactions, dependent: :destroy
 
   serialize :meta_info
   validates :name, uniqueness: { scope: :user }
@@ -18,6 +19,9 @@ class BankAccount < ApplicationRecord
   def sync_account_info
     self.meta_info = client.account_info 
     save!
+  end
+
+  def sync_transactions
   end
 
   def user_info

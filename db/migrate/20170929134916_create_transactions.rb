@@ -7,6 +7,7 @@ class CreateTransactions < ActiveRecord::Migration[5.0]
       t.integer :kind
       t.text :description
       t.string :currency
+      t.string :uid
       t.timestamps
     end
   end
