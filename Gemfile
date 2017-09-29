@@ -35,6 +35,11 @@ gem 'starling-ruby'
 gem 'chartkick'
 gem 'groupdate'
 
+# Uploads
+gem 'fog-aws'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
