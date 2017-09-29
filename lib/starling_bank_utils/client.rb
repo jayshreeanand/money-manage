@@ -12,5 +12,9 @@ module StarlingBankUtils
     def account_balance
       @starling_client.account_balance.get
     end
+
+    def transactions
+      @starling_client.transactions.list
+    end
   end
 end
