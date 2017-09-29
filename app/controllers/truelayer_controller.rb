@@ -10,6 +10,7 @@ class TruelayerController < ApplicationController
     bank_account = current_user.bank_accounts.where(name: bank_id, kind: :truelayer).first_or_initialize
     bank_account.uid = access_token
     bank_account.save!
+    bank_account.sync_account_info
     redirect_to bank_accounts_path
   end
 
