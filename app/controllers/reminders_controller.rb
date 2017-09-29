@@ -2,11 +2,11 @@ class RemindersController < ApplicationController
   before_action :set_reminder, only: [:show, :edit, :update, :destroy]
 
   layout 'dashboard/main'
-  
+
   # GET /reminders
   # GET /reminders.json
   def index
-    @reminders = Reminder.all
+    @reminders = current_user.reminders
   end
 
   # GET /reminders/1
