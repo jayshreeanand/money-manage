@@ -69,6 +69,7 @@ class RemindersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reminder_params
-      params.fetch(:reminder, {})
+      params.require(:reminder).permit(:description, :kind, :remind_at).merge(user_id: current_user.id)
+
     end
 end
