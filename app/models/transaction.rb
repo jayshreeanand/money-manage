@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
   belongs_to :bank_account
+  has_many :receipts
 
   validates :amount, presence: true
   validates :description, presence: true
