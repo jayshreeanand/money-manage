@@ -20,7 +20,7 @@ module TruelayerUtils
           faraday.request :json
         end
         faraday.response :raise_error
-        faraday.response :logger, ::Logger.new(STDOUT), bodies: true
+        # faraday.response :logger, ::Logger.new(STDOUT), bodies: true
         faraday.response :follow_redirects
         faraday.response :logger
       end
@@ -49,6 +49,12 @@ module TruelayerUtils
     def fetch_access_token(code)
       params = { grant_type: 'authorization_code', code: code, client_id: Rails.application.secrets.truelayer_client_id, client_secret: Rails.application.secrets.truelayer_client_secret, redirect_uri: 'http://localhost:3000/truelayer/callback'}
       response = execute(:post, 'connect/token', params, false, 'https://auth.truelayer.com')
+      response['access_token']
+    end
+
+    def fetch_starling_access_token(code)
+      params = { grant_type: 'authorization_code', code: code, client_id: Rails.application.secrets.starling_client_id, client_secret: Rails.application.secrets.starling_client_secret, redirect_uri: 'http://localhost:3000/starling_bank/callback'}
+      response = execute(:post, 'oauth/access-token', params, false, 'https://api.starlingbank.com')
       response['access_token']
     end
 
