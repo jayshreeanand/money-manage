@@ -1,12 +1,19 @@
-<p>Bank Name: <%= @bank_account.name %></p>
-<p>API used: <%= @bank_account.kind %></p>
-<p>Bank Account: <%= @bank_account.meta_info[:account_number] %></p>
-
-<p>Currency: <%= @bank_account.meta_info[:currency] %></p>
-
-<p>Available Balance: <%= @bank_account.meta_info[:available_balance] %></p>
-<p>Cleared Balance: <%= @bank_account.meta_info[:cleared_balance] %></p>
-<p>Pending: <%= @bank_account.meta_info[:pending] %></p>
-
-
 <%= link_to 'Sync Transactions', bank_account_sync_transactions_path(@bank_account) %> 
+
+<h5>Bank Name:</h5><p><%= @bank_account.name %></p>
+<br>
+<h5>API used:</h5><p><%= @bank_account.kind %></p>
+<br>
+<h5>Bank Account:</h5><p><%= @bank_account.meta_info[:account_number] %></p>
+<br>
+
+<h5>Currency:</h5><p><%= @bank_account.meta_info[:currency] %></p>
+<br>
+
+<h5>Available Balance:</h5><p><%= @bank_account.meta_info[:available_balance] %></p>
+<br>
+<h5>Cleared Balance:</h5><p><%= @bank_account.meta_info[:cleared_balance] %></p>
+<br>
+<h5>Pending:</h5><p><%= @bank_account.meta_info[:pending] %></p>
+
+

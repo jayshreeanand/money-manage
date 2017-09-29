@@ -37,6 +37,10 @@ body {
 .sidebar {
   display: none;
 }
+a:hover {
+  text-decoration: none;
+}
+
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
@@ -121,9 +125,16 @@ body {
   margin-bottom: 20px;
   text-align: center;
   vertical-align: center;
+  padding-top: 20px;
+
 
 }
 
+.bank-account-section {
+  a i{
+    color: #42dff4;
+  }
+}
 .link-account-thumb {
   background-color: #eee;
   width: 230px;

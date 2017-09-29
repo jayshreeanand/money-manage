@@ -5,11 +5,11 @@
 
 <% @bank_accounts.each_with_index do |bank_account, i| %>
 
-  <div class="col-md-3">
+  <div class="col-md-3 bank-account-section" >
     <%= link_to bank_account do %>
       <i class="fa fa-university fa-4x img-rounded bank-account-thumb"></i>
-      <p> <%= bank_account.name %></p>
-      <p> <%= bank_account.meta_info[:available_balance] %></p>
+      <h4> <%= bank_account.name.titleize %></h4>
+      <h4> <%= bank_account.meta_info[:available_balance] %></h4>
 
     <% end %>
   </div>
