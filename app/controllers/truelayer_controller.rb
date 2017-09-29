@@ -10,7 +10,7 @@ class TruelayerController < ApplicationController
     bank_account = current_user.bank_accounts.where(name: bank_id, kind: :truelayer).first_or_initialize
     bank_account.uid = access_token
     bank_account.save!
-    redirect_to '/'
+    redirect_to bank_accounts_path
   end
 
   def access_token_callback
