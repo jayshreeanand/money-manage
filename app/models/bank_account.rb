@@ -8,7 +8,16 @@ class BankAccount < ApplicationRecord
   enum kind: { truelayer: 0, starling: 1 }
 
   def client
-    TruelayerUtils::Client.new(uid)
+    if truelayer?
+      TruelayerUtils::Client.new(uid)
+    elsif starling?
+      StarlingBankUtils::Client.new(uid)
+    end
+  end
+
+  def sync_account_info
+    self.meta_info = client.account_info 
+    save!
   end
 
   def user_info

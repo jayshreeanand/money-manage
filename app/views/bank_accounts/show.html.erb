@@ -1,0 +1,9 @@
+<p>Bank Name: <%= @bank_account.name %></p>
+<p>API used: <%= @bank_account.kind %></p>
+<p>Bank Account: <%= @bank_account.meta_info[:account_number] %></p>
+
+<p>Currency: <%= @bank_account.meta_info[:currency] %></p>
+
+<p>Available Balance: <%= @bank_account.meta_info[:available_balance] %></p>
+<p>Cleared Balance: <%= @bank_account.meta_info[:cleared_balance] %></p>
+<p>Pending: <%= @bank_account.meta_info[:pending] %></p>

@@ -88,5 +88,17 @@ module TruelayerUtils
       response = execute(:get, "data/v1/accounts/#{account_id}/transactions")
       response['results']
     end
+
+    def account_info
+      account = accounts.first
+      balance = account_balance(account['account_id'])
+       { 
+        account_number: account['account_number']['number'],
+        currency: account['currency'],
+        available_balance: balance['available'],
+        cleared_balance: balance['current'],
+        pending: '0.0'
+      }
+    end
   end
 end

@@ -18,12 +18,27 @@ module StarlingBankUtils
      
     end
 
+    def account_number
+      @starling_client.account.get.number
+    end
+
     def account_balance
       @starling_client.account_balance.get
     end
 
     def transactions
       @starling_client.transactions.list
+    end
+
+    def account_info
+      balance = account_balance
+      { 
+        account_number: account_number,
+        currency: balance.currency,
+        available_balance: balance.available_to_spend,
+        cleared_balance: balance.cleared_balance,
+        pending: balance.pending_transactions,
+      }
     end
   end
 end
