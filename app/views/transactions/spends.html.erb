@@ -1,0 +1,7 @@
+<%= line_chart @bank_accounts.map { |bank_account|
+  {name: bank_account.name, data: bank_account.transactions.group(:transacted_at).sum(:amount) }
+} %>
+
+<% @bank_accounts.each do |bank_account| %>
+  <%= line_chart(bank_account.transactions.group(:transacted_at).sum(:amount)) %>
+<% end %>
