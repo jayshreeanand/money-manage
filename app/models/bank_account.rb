@@ -1,6 +1,7 @@
 class BankAccount < ApplicationRecord
   belongs_to :user
 
+  serialize :meta_info
   validates :name, uniqueness: { scope: :user }
   validates :kind, presence: true
 
