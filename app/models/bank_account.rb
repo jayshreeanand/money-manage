@@ -22,7 +22,7 @@ class BankAccount < ApplicationRecord
   end
 
   def sync_transactions
-    transactions.all.destroy_all
+    transactions.all.destroy_all if truelayer? # true layer accounts dont have transaction ids
     client.transactions.each do |transaction_params|
       transaction_params[:bank_account_id] = id 
       Transaction.sync(transaction_params)
