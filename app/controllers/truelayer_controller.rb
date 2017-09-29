@@ -7,7 +7,7 @@ class TruelayerController < ApplicationController
     access_token = client.fetch_access_token(code)
 
     bank_id = TruelayerUtils::Client.new(access_token).bank_id
-    bank_account = current_user.bank_accounts.where(name: bank_id).first_or_initialize
+    bank_account = current_user.bank_accounts.where(name: bank_id, kind: :truelayer).first_or_initialize
     bank_account.uid = access_token
     bank_account.save!
     redirect_to '/'

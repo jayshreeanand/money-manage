@@ -2,6 +2,9 @@ class BankAccount < ApplicationRecord
   belongs_to :user
 
   validates :name, uniqueness: { scope: :user }
+  validates :kind, presence: true
+
+  enum kind: { truelayer: 0, sterling: 1 }
 
   def client
     TruelayerUtils::Client.new(uid)
