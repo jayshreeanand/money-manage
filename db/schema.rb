@@ -28,11 +28,13 @@ ActiveRecord::Schema.define(version: 20170929163403) do
 
   create_table "receipts", force: :cascade do |t|
     t.integer  "transaction_id"
+    t.integer  "user_id"
     t.string   "document_image"
     t.text     "notes"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["transaction_id"], name: "index_receipts_on_transaction_id", using: :btree
+    t.index ["user_id"], name: "index_receipts_on_user_id", using: :btree
   end
 
   create_table "transactions", force: :cascade do |t|

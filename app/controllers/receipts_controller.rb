@@ -1,10 +1,12 @@
 class ReceiptsController < ApplicationController
+  layout 'dashboard/main'
+  
   before_action :set_receipt, only: [:show, :edit, :update, :destroy]
 
   # GET /receipts
   # GET /receipts.json
   def index
-    @receipts = Receipt.all
+    @receipts = current_user.receipts.all
   end
 
   # GET /receipts/1
@@ -69,6 +71,8 @@ class ReceiptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
-      params.fetch(:receipt, {})
+      params.fetch(:receipt, :document_image)
+      params.require(:receipt).permit(:document_image, :notes).merge(user_id: current_user.id)
+
     end
 end

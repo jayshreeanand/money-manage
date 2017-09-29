@@ -3,15 +3,10 @@
 <h1>Receipts</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @receipts.each do |receipt| %>
       <tr>
+        <td><%= image_tag(receipt.document_image_url(:thumb)) %></td>
         <td><%= link_to 'Show', receipt %></td>
         <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
         <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
