@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get '/starling_bank' => 'starling_bank#authenticate'
   get '/starling_bank/callback' => 'starling_bank#callback'
 
+  get 'connect' => 'bank_accounts#connect'
   resources :bank_accounts
 end
