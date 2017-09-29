@@ -1,7 +1,7 @@
 class Reminder < ApplicationRecord
   belongs_to :user
-  belongs_to :transaction
-  
+  belongs_to :transaction_rec
+
   validates :remind_at, presence: true
   validates :kind, presence: true
 
