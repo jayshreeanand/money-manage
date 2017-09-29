@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :receipts
   get 'transactions/index'
 
   devise_for :users
