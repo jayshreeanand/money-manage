@@ -1,15 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Bank Accounts</h1>
+<div class="row">
 
 <% @bank_accounts.each_with_index do |bank_account, i| %>
-  <%= link_to bank_account do %>
-    <i class="fa fa-university fa-4x img-rounded bank-account-thumb"></i>
-  <% end %>
-  </tr>
-<% end %>
 
+  <div class="col-md-3">
+    <%= link_to bank_account do %>
+      <i class="fa fa-university fa-4x img-rounded bank-account-thumb"></i>
+      <p> <%= bank_account.name %></p>
+      <p> <%= bank_account.meta_info[:available_balance] %></p>
+
+    <% end %>
+  </div>
+<% end %>
+</div>
+<br>
+<br>
 <br>
 
-<%= link_to 'Add another Bank Account', connect_path %>
 
+<%= link_to 'Add another Bank Account', connect_path %>  |
+
+<%= link_to 'Sync account information', bank_accounts_sync_path %> 

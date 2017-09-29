@@ -12,4 +12,11 @@ class BankAccountsController < ApplicationController
   def show
     @bank_account = BankAccount.find(params[:id])
   end
+
+  def sync
+    current_user.bank_accounts.each do |bank_account|
+      bank_account.sync_account_info
+    end
+    redirect_to bank_accounts_path
+  end
 end
