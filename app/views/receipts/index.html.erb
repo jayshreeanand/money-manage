@@ -2,11 +2,13 @@
 
 <h1>Receipts</h1>
 
-<table>
+<table class="table table-bordered">
   <tbody>
     <% @receipts.each do |receipt| %>
       <tr>
         <td><%= image_tag(receipt.document_image_url(:thumb)) %></td>
+        <td><%= "#{receipt.transaction_rec.try(:bank_account).try(:name)} #{receipt.transaction_rec.try(:description)}  #{receipt.transaction_rec.try(:transacted_at)}" %></td>
+
         <td><%= link_to 'Show', receipt %></td>
         <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
         <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>

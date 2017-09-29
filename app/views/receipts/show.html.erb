@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<%= "#{@receipt.transaction_rec.try(:bank_account).try(:name)} #{@receipt.transaction_rec.try(:description)}  #{@receipt.transaction_rec.try(:transacted_at)}" %>
 <%= image_tag(@receipt.document_image_url(:normal)) %></td>
 
 <%= link_to 'Edit', edit_receipt_path(@receipt) %> |
