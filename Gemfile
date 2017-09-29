@@ -23,11 +23,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 # Misc
-gem 'faraday'
-gem 'faraday_middleware'
+# gem 'faraday'
+# gem 'faraday_middleware'
 
 # Fintech
 gem 'currency_cloud'
+gem 'starling-ruby'
 
 group :development, :test do
   gem 'byebug', platform: :mri
