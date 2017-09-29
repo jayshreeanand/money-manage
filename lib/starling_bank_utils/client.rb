@@ -1,3 +1,5 @@
+require 'starling'
+
 module StarlingBankUtils
   class Client
     def initialize
@@ -5,6 +7,10 @@ module StarlingBankUtils
         access_token: Rails.application.secrets.starling_access_token,
         environment: :sandbox,
       )
+    end
+
+    def account_balance
+      @starling_client.account_balance.get
     end
   end
 end
