@@ -42,18 +42,18 @@ module TruelayerUtils
     end
 
     def authenticate_url
-      params = { client_id: Rails.application.secrets.truelayer_client_id, response_type: 'code', enable_mock: true, nonce: SecureRandom.hex, redirect_uri: 'http://localhost:3000/truelayer/callback', scope: 'info accounts balance transactions cards' }
+      params = { client_id: Rails.application.secrets.truelayer_client_id, response_type: 'code', enable_mock: true, nonce: SecureRandom.hex, redirect_uri: "#{Rails.application.secrets.root_url}/truelayer/callback", scope: 'info accounts balance transactions cards' }
       'https://auth.truelayer.com/?' + params.to_query
     end
 
     def fetch_access_token(code)
-      params = { grant_type: 'authorization_code', code: code, client_id: Rails.application.secrets.truelayer_client_id, client_secret: Rails.application.secrets.truelayer_client_secret, redirect_uri: 'http://localhost:3000/truelayer/callback'}
+      params = { grant_type: 'authorization_code', code: code, client_id: Rails.application.secrets.truelayer_client_id, client_secret: Rails.application.secrets.truelayer_client_secret, redirect_uri: "#{Rails.application.secrets.root_url}/truelayer/callback"}
       response = execute(:post, 'connect/token', params, false, 'https://auth.truelayer.com')
       response['access_token']
     end
 
     def fetch_starling_access_token(code)
-      params = { grant_type: 'authorization_code', code: code, client_id: Rails.application.secrets.starling_client_id, client_secret: Rails.application.secrets.starling_client_secret, redirect_uri: 'http://localhost:3000/starling_bank/callback'}
+      params = { grant_type: 'authorization_code', code: code, client_id: Rails.application.secrets.starling_client_id, client_secret: Rails.application.secrets.starling_client_secret, redirect_uri: "#{Rails.application.secrets.root_url}/starling_bank/callback"}
       response = execute(:post, 'oauth/access-token', params, false, 'https://api.starlingbank.com')
       response['access_token']
     end

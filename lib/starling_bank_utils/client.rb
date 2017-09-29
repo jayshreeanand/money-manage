@@ -10,7 +10,7 @@ module StarlingBankUtils
     end
 
     def authenticate_url
-      params = { client_id: Rails.application.secrets.starling_client_id, response_type: 'code', state: SecureRandom.hex, redirect_uri: 'http://localhost:3000/starling_bank/callback' }
+      params = { client_id: Rails.application.secrets.starling_client_id, response_type: 'code', state: SecureRandom.hex, redirect_uri: "#{Rails.application.secrets.root_url}/starling_bank/callback" }
       'https://oauth-sandbox.starlingbank.com/?' + params.to_query
     end
 
