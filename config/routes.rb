@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'transactions/index'
+
   devise_for :users
   
   get '/' => 'pages#home'
