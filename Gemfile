@@ -31,6 +31,9 @@ gem 'faraday_middleware'
 gem 'currency_cloud'
 gem 'starling-ruby'
 
+# Graphs
+gem 'chartkick'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
