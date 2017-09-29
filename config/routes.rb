@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'connect' => 'bank_accounts#connect'
   get '/bank_accounts/sync' => 'bank_accounts#sync'
 
-  resources :bank_accounts
+  resources :bank_accounts do
+      get :sync_transactions
+  end
   resources :transactions
 end

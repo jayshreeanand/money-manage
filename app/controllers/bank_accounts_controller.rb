@@ -19,4 +19,10 @@ class BankAccountsController < ApplicationController
     end
     redirect_to bank_accounts_path
   end
+
+  def sync_transactions
+    @bank_account = BankAccount.find(params['bank_account_id'])
+    @bank_account.sync_transactions
+    redirect_to transactions_path
+  end
 end

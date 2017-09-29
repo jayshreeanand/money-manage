@@ -7,3 +7,6 @@
 <p>Available Balance: <%= @bank_account.meta_info[:available_balance] %></p>
 <p>Cleared Balance: <%= @bank_account.meta_info[:cleared_balance] %></p>
 <p>Pending: <%= @bank_account.meta_info[:pending] %></p>
+
+
+<%= link_to 'Sync Transactions', bank_account_sync_transactions_path(@bank_account) %> 
