@@ -9,7 +9,7 @@
     <%= link_to bank_account do %>
       <i class="fa fa-university fa-4x img-rounded bank-account-thumb"></i>
       <h4> <%= bank_account.name.titleize %></h4>
-      <h4> <%= bank_account.meta_info[:available_balance] %></h4>
+      <h4> <%= "#{bank_account.meta_info[:available_balance]} #{bank_account.meta_info[:currency]}" %></h4>
 
     <% end %>
   </div>
