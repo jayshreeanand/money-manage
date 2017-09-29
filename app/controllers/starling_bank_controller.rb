@@ -1,6 +1,4 @@
 class StarlingBankController < ApplicationController
-  before_action :authenticate_user!
-
   def callback
     code = request.params['code']
     client = TruelayerUtils::Client.new(nil, true) #use same truelayer code exchange for starling
