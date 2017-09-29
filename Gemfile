@@ -25,7 +25,7 @@ gem 'bootstrap-sass'
 
 # Misc
 # gem 'faraday'
-# gem 'faraday_middleware'
+gem 'faraday_middleware'
 
 # Fintech
 gem 'currency_cloud'
