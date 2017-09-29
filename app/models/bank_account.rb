@@ -4,7 +4,7 @@ class BankAccount < ApplicationRecord
   validates :name, uniqueness: { scope: :user }
   validates :kind, presence: true
 
-  enum kind: { truelayer: 0, sterling: 1 }
+  enum kind: { truelayer: 0, starling: 1 }
 
   def client
     TruelayerUtils::Client.new(uid)
