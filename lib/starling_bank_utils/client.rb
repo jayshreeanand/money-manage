@@ -27,7 +27,13 @@ module StarlingBankUtils
     end
 
     def transactions
-      @starling_client.transactions.list
+      results = @starling_client.transactions.list
+      response = []
+      results.each do |result|
+        response << { uid: result.id, amount: result.amount, currency: result.currency, description: result.narrative, balance: JSON.parse(result.to_json)['parsed_data']['balance'], source: result.source }
+      end
+      # @parsed_data={"_links"=>{"detail"=>{"href"=>"api/v1/transactions/mastercard/454e8757-1a81-4b28-b174-8a8a5d92d923", "templated"=>false}}, "id"=>"454e8757-1a81-4b28-b174-8a8a5d92d923", "currency"=>"GBP", "amount"=>-29.7, "direction"=>"OUTBOUND", "created"=>"2017-09-29T13:47:36.725Z", "narrative"=>"Sofitel", "source"=>"MASTER_CARD", "balance"=>4217.86}>
+      response
     end
 
     def account_info
