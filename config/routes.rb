@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :reminders
   resources :receipts
   get 'transactions/index'
 
