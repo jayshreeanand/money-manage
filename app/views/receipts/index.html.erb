@@ -8,6 +8,7 @@
       <tr>
         <td><%= image_tag(receipt.document_image_url(:thumb)) %></td>
         <td><%= "#{receipt.transaction_rec.try(:bank_account).try(:name)} #{receipt.transaction_rec.try(:description)}  #{receipt.transaction_rec.try(:transacted_at)}" %></td>
+        <td><%= receipt.notes %></td>
 
         <td><%= link_to 'Show', receipt %></td>
         <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>

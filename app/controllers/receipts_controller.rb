@@ -17,6 +17,7 @@ class ReceiptsController < ApplicationController
   # GET /receipts/new
   def new
     @receipt = Receipt.new
+    @transactions = current_user.transactions
   end
 
   # GET /receipts/1/edit
@@ -72,7 +73,7 @@ class ReceiptsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
       params.fetch(:receipt, :document_image)
-      params.require(:receipt).permit(:document_image, :notes).merge(user_id: current_user.id)
+      params.require(:receipt).permit(:document_image, :notes, :transaction_id).merge(user_id: current_user.id)
 
     end
 end
