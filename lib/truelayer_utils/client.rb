@@ -100,5 +100,16 @@ module TruelayerUtils
         pending: '0.0'
       }
     end
+
+    def transactions
+      account = accounts.first
+      results = account_transactions(account['account_id'])
+
+       response = []
+       results.each do |result|
+        response << { uid: SecureRandom.urlsafe_base64 , amount: result['amount'], currency: result['currency'], description: result['description'], source: result['transaction_type'], transacted_at:  DateTime.parse(result['timestamp']) }
+      end
+      response
+    end
   end
 end

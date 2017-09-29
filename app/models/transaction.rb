@@ -12,7 +12,8 @@ class Transaction < ApplicationRecord
       amount: params[:amount],
       currency: params[:currency],
       balance: params[:balance],
-      source: params[:source]
+      source: params[:source],
+      transacted_at: params[:transacted_at]
     )
     transaction.save! if transaction.new_record? || transaction.changed?
     transaction

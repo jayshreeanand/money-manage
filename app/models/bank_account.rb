@@ -22,6 +22,7 @@ class BankAccount < ApplicationRecord
   end
 
   def sync_transactions
+    transactions.all.destroy_all
     client.transactions.each do |transaction_params|
       transaction_params[:bank_account_id] = id 
       Transaction.sync(transaction_params)

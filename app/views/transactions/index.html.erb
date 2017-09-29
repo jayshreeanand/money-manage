@@ -4,12 +4,14 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th class="col-md-2">Bank</th>
-        <th class="col-md-2">Description</th>
-        <th class="col-md-2">Currency</th>
-        <th class="col-md-2">Amount</th>
-        <th class="col-md-2">Balance</th>
-        <th class="col-md-2">Source</th>
+        <th>Bank</th>
+        <th>Description</th>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Balance</th>
+        <th>Source</th>
+        <th>Transacted at</th>
+
       </tr>
     </thead>
 
@@ -23,6 +25,7 @@
             <td><%= transaction.amount %></td>
             <td><%= transaction.balance %></td>
             <td><%= transaction.source %></td>
+            <td><%= transaction.transacted_at %></td>
           <% end %>
         </tr>
       <% end %>
